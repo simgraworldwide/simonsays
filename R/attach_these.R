@@ -1,3 +1,12 @@
+#' Attach (and if necessary, install) packages
+#'
+#' @param required_packages A character vector listing all packages the user wants to attach.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#' required_packages <- c("rlang", "devtools")
 attach_these <- function(required_packages) {
 
   # check for packages
@@ -8,11 +17,11 @@ attach_these <- function(required_packages) {
   } else {
 
     # install required packages that are not installed yet:
-    new_packages <- required_packages[!(required_packages %in% installed.packages()[,"Package"])]
+    new_packages <- required_packages[!(required_packages %in% utils::installed.packages()[,"Package"])]
 
     if(length(new_packages)) {
 
-      install.packages(new_packages)
+      utils::install.packages(new_packages, repos = getOption("repos")[[1]])
 
     }
 
