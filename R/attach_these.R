@@ -29,7 +29,7 @@ attach_these <- function(required_packages) {
     invisible(lapply(required_packages, library, character.only = T))
 
     # message
-    message("Success: The following packages were attached successfully: ", paste(required_packages, collapse=", "))
+    message("Success: The following packages were attached successfully: ", paste(required_packages, collapse = ", "))
 
   }
 
